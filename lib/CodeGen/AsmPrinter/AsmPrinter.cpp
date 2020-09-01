@@ -896,6 +896,12 @@ bool AsmPrinter::doFinalization(Module &M) {
     bool IsThumb = (Arch == Triple::thumb || Arch == Triple::thumbeb);
     MCInst TrapInst;
     TM.getInstrInfo()->getTrap(TrapInst);
+
+    // modified by xgwang. Feb/15/2015
+    // Emit the JumpTable section.
+    //unsigned LogAlignment = llvm::Log2_64(JITI->entryAlignment());
+    OutStreamer.SwitchSection(OutContext.getObjectFileInfo()->getJumpTableSection());
+
     for (const auto &KV : JITI->getTables()) {
       uint64_t Count = 0;
       for (const auto &FunPair : KV.second) {

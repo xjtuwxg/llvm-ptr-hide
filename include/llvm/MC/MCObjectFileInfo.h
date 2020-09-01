@@ -57,6 +57,11 @@ protected:
   ///
   const MCSection *TextSection;
 
+  /// add by xgwang, Feb/15/2015
+  /// JumpTable TextSection - Section for JumpTables.
+  ///
+  const MCSection *JumpTableSection;
+
   /// DataSection - Section directive for standard data.
   ///
   const MCSection *DataSection;
@@ -215,6 +220,8 @@ public:
   }
 
   const MCSection *getTextSection() const { return TextSection; }
+  // add by xgwang, Feb/15/2015
+  const MCSection *getJumpTableSection() const { return JumpTableSection; }
   const MCSection *getDataSection() const { return DataSection; }
   const MCSection *getBSSSection() const { return BSSSection; }
   const MCSection *getLSDASection() const { return LSDASection; }

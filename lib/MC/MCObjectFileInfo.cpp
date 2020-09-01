@@ -421,6 +421,13 @@ void MCObjectFileInfo::InitELFMCObjectFileInfo(Triple T) {
                        ELF::SHF_ALLOC,
                        SectionKind::getText());
 
+  // add by xgwang. Feb/15/2015
+  JumpTableSection =
+    Ctx->getELFSection(".jump_table.text", ELF::SHT_PROGBITS,
+                       ELF::SHF_EXECINSTR |
+                       ELF::SHF_ALLOC,
+                       SectionKind::getText());
+
   DataSection =
     Ctx->getELFSection(".data", ELF::SHT_PROGBITS,
                        ELF::SHF_WRITE |ELF::SHF_ALLOC,
