@@ -134,6 +134,7 @@ public:
 //===----------------------------------------------------------------------===//
   template <typename T>
   class IntrusiveRefCntPtr {
+  public:
     T* Obj;
 
   public:

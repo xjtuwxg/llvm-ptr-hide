@@ -217,6 +217,10 @@ JTableType("jump-table-type",
                          "Create one table per unique function type."),
               clEnumValEnd));
 
+// add by xgwang. Xiaoguang's work on control data hiding
+cl::opt<bool>
+CPH("cph", cl::desc("Control pointer hiding with jump tables"), cl::init(false));
+
 // Common utility function tightly tied to the options listed here. Initializes
 // a TargetOptions object with CodeGen flags and returns it.
 static inline TargetOptions InitTargetOptionsFromCodeGenFlags() {
@@ -244,6 +248,9 @@ static inline TargetOptions InitTargetOptionsFromCodeGenFlags() {
 
   Options.MCOptions = InitMCTargetOptionsFromFlags();
   Options.JTType = JTableType;
+
+  // add by xgwang. Feb/14/2015
+  Options.CPH = CPH;
 
   return Options;
 }

@@ -65,6 +65,7 @@ namespace llvm {
           CompressDebugSections(false), FunctionSections(false),
           DataSections(false), TrapUnreachable(false), TrapFuncName(""),
           FloatABIType(FloatABI::Default),
+          CPH(false),   /* add by xgwang, Feb/14/2015*/
           AllowFPOpFusion(FPOpFusion::Standard), JTType(JumpTable::Single) {}
 
     /// PrintMachineCode - This flag is enabled when the -print-machineinstrs
@@ -219,6 +220,9 @@ namespace llvm {
     /// JTType - This flag specifies the type of jump-instruction table to
     /// create for functions that have the jumptable attribute.
     JumpTable::JumpTableType JTType;
+
+    //// add by xgwang. Feb/14/2015. Control Pointer Hiding.
+    bool CPH;
 
     /// Machine level options.
     MCTargetOptions MCOptions;
